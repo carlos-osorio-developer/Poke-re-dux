@@ -7,9 +7,15 @@ import style from './pokemonCard.module.css';
 const PokemonCard = () => (
   <Grid.Column mobile={16} tablet={8} computer={4}>
     <div className={style.PokemonCard}>
-      <Icon name="heart" color="red" />
-      <Image centered src="" alt="Pokemon img" />
-      <p>Ditto</p>
+      <button type="button" className={style.PokemonCardFavorite}>
+        <Icon name="heart" color="red" />
+      </button>
+      <Image
+        centered
+        src="https://static.wikia.nocookie.net/espokemon/images/0/03/Ditto.png"
+        alt="Pokemon img"
+      />
+      <p className={style.PokemonCardTitle}>Ditto</p>
       <Label color="green"> Normal </Label>
     </div>
   </Grid.Column>
