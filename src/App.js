@@ -1,9 +1,13 @@
 import Header from './components/header';
+import PokemonList from './components/pokemonList';
 import 'semantic-ui-css/semantic.min.css';
 
 function App() {
   return (
-    <Header />
+    <div>
+      <Header />
+      <PokemonList />
+    </div>
   );
 }
 
