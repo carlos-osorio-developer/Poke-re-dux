@@ -1,12 +1,15 @@
 import { React, useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
 import PokemonCard from './pokemonCard';
-import getPokemons from '../redux/slices/pokemonListSlice';
+import { getPokemons } from '../redux/slices/pokemonListSlice';
 
 const PokemonList = () => {
+  const dispatch = useDispatch();
+
   const pokemons = Array(10).fill('');
   useEffect(() => {
-    getPokemons(151).then((res) => { console.log(res); });
+    dispatch(getPokemons());
   }, []);
 
   return (
