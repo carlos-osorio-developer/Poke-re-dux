@@ -1,24 +1,26 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import styles from './header.module.css';
 import logo from '../assets/images/logo_v4.svg';
 
 const Header = () => (
   <div>
-    <header className="App-header">
+    <Navbar className={styles.header}>
       <Link to="/">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Navbar.Brand>
+          <img src={logo} className={styles.brandImage} alt="logo" />
+        </Navbar.Brand>
       </Link>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/favorites">Favorites</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+      <Nav bg="dark" expand="lg">
+        <Nav.Link>
+          <NavLink className={styles.link} to="/">Home</NavLink>
+        </Nav.Link>
+        <Nav.Link>
+          <NavLink className={styles.link} to="/favorites">Favorites</NavLink>
+        </Nav.Link>
+      </Nav>
+    </Navbar>
     <Outlet />
   </div>
 );
