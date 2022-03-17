@@ -6,11 +6,6 @@
   box-shadow: 0.2em 0.4em 0.4em -0.2em #999;
 }
 
-.PokemonCardTitle {
-  text-align: center;
-  color: #999;
-}
-
 .PokemonCardFavorite {
   background-color: transparent;
   border: none;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FaHeart } from 'react-icons/fa';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
 import style from './pokemonCard.module.css';
 
 const PokemonCard = (props) => {
@@ -10,18 +11,15 @@ const PokemonCard = (props) => {
 
   return (
     <Card className={style.PokemonCard}>
-      <Card.Img className="w-50 m-auto" variant="top" src={image} alt={pokeName} />
-      <Card.Body>
-        <Card.Title className="d-flex justify-content-around">
-          {pokeName.replace(/^\w/, (c) => c.toUpperCase())}
-          <button type="button" className={style.PokemonCardFavorite}>
-            <FaHeart />
-          </button>
+      <Card.Img className="w-75 m-auto" variant="top" src={image} alt={pokeName} />
+      <Card.Body className="d-flex flex-column align-items-center">
+        <Card.Title className="d-flex justify-content-around text-capitalize">
+          {pokeName}
+          <Badge bg="success" className="ms-3 fs-6">{type}</Badge>
         </Card.Title>
-        <Card.Text>
-          Holaaa
-        </Card.Text>
-        <Badge bg="info">{type}</Badge>
+        <Button variant="warning" className="w-50 mt-4">
+          <FaHeart />
+        </Button>
       </Card.Body>
     </Card>
   );
