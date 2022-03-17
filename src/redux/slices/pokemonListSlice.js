@@ -14,11 +14,23 @@ const getPokemons = (limit = 151) => async (dispatch) => {
   dispatch({ type: GET_POKEMONS });
   const request = await axiosInstance.get(`pokemon?limit=${limit}`);
   const data = await request.data.results;
-  if (data) {
-    dispatch({ type: GET_POKEMONS_SUCCESS, payload: data });
-  } else {
-    dispatch({ type: GET_POKEMONS_FAILURE, payload: request.data });
-  }
+  const pokemons = data.map(async (pokemon) => {
+    const pokeRequest = await axiosInstance.get(pokemon.url);
+    const pokeData = await pokeRequest.data;
+    return {
+      id: pokeData.id,
+      name: pokemon.name,
+      image: pokeData.sprites.front_default,
+      type: pokeData.types[0].type.name,
+    };
+  });
+  Promise.all(pokemons).then((pokemons) => {
+    if (pokemons) {
+      dispatch({ type: GET_POKEMONS_SUCCESS, payload: pokemons });
+    } else {
+      dispatch({ type: GET_POKEMONS_FAILURE, payload: request.data });
+    }
+  });
 };
 
 const setPokemons = (payload) => ({

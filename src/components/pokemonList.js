@@ -11,12 +11,11 @@ const PokemonList = () => {
   }, []);
 
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
-
+  let id = 1;
   return (
     <Grid className="PokemonList">
       {pokemons.map((pokemon) => {
-        const id = pokemon.url.split('/')[6];
-        console.log('the id', id);
+        id += 1;
         return <PokemonCard key={id} pokeName={pokemon.name} />;
       })}
     </Grid>
