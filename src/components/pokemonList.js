@@ -11,13 +11,17 @@ const PokemonList = () => {
   }, []);
 
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
-  let id = 1;
+
   return (
     <Grid className="PokemonList">
-      {pokemons.map((pokemon) => {
-        id += 1;
-        return <PokemonCard key={id} pokeName={pokemon.name} />;
-      })}
+      {pokemons.map((pokemon) => (
+        <PokemonCard
+          key={pokemon.id}
+          pokeName={pokemon.name}
+          image={pokemon.image}
+          type={pokemon.type}
+        />
+      ))}
     </Grid>
   );
 };
