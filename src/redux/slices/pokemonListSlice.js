@@ -20,7 +20,7 @@ const getPokemons = (limit = 151) => async (dispatch) => {
     return {
       id: pokeData.id,
       name: pokemon.name,
-      image: pokeData.sprites.front_default,
+      image: pokeData.sprites.other.dream_world.front_default,
       type: pokeData.types[0].type.name,
     };
   });
