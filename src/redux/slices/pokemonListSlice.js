@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 const getPokemons = (limit = 151) => async (dispatch) => {
   dispatch({ type: GET_POKEMONS });
   const request = await axiosInstance.get(`pokemon?limit=${limit}`);
-  const data = await request.data;
+  const data = await request.data.results;
   dispatch({ type: GET_POKEMONS_SUCCESS, payload: data });
 };
 
@@ -23,6 +23,10 @@ const setPokemons = (payload) => ({
 
 const pokemonListReducer = (state = [], action) => {
   switch (action.type) {
+    case GET_POKEMONS:
+      return { ...state, loading: true };
+    case GET_POKEMONS_SUCCESS:
+      return { ...state, loading: false, pokemons: action.payload };
     case SET_POKEMONS:
       return { ...state, list: action.payload };
     default:

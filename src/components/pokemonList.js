@@ -12,11 +12,14 @@ const PokemonList = () => {
     dispatch(getPokemons());
   }, []);
 
+  let id = 0;
+
   return (
     <Grid className="PokemonList">
-      {pokemons.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
-      ))}
+      {pokemons.map((pokemon) => {
+        id += 1;
+        return <PokemonCard key={id} pokemon={pokemon} />;
+      })}
     </Grid>
   );
 };
