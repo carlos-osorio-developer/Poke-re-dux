@@ -1,5 +1,6 @@
 import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Container from 'react-bootstrap/Container';
 import PokemonCard from './pokemonCard';
 import SearchBar from './searchBar';
 import { getPokemons } from '../redux/slices/pokemonListSlice';
@@ -15,7 +16,7 @@ const PokemonList = () => {
   return (
     <div>
       <SearchBar />
-      <div className="container">
+      <Container className="mt-1 d-flex flex-wrap">
         {pokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
@@ -24,7 +25,7 @@ const PokemonList = () => {
             type={pokemon.type}
           />
         ))}
-      </div>
+      </Container>
     </div>
   );
 };
