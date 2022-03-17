@@ -1,4 +1,5 @@
 .PokemonCard {
+  width: 12rem;
   border-radius: 20px;
   padding: 1rem;
   margin: 0.5rem;

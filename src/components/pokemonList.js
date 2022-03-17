@@ -16,7 +16,7 @@ const PokemonList = () => {
   return (
     <div>
       <SearchBar />
-      <Container className="mt-1 d-flex flex-wrap">
+      <Container className="mt-1 d-flex flex-wrap justify-content-center z-index-1">
         {pokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
