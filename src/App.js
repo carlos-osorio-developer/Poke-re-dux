@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './components/header';
-import PokemonList from './components/pokemonList';
+import Header from './pages/home/header';
+import PokemonList from './pages/home/pokemonList';
 
 function App() {
   return (

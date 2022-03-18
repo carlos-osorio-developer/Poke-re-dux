@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import PokemonCard from './pokemonCard';
 import SearchBar from './searchBar';
-import { getPokemons } from '../redux/slices/pokemonListSlice';
+import Loader from './loader';
+import { getPokemons } from '../../redux/slices/pokemonListSlice';
 
 const PokemonList = () => {
   const dispatch = useDispatch();
@@ -12,11 +13,13 @@ const PokemonList = () => {
   }, []);
 
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
-  const loading = useSelector((state) => state.pokeState.loading);
+  const loading = useSelector((state) => state.pokeState.loading) || false;
+  console.log(loading);
 
   return (
     <div>
       <SearchBar />
+      { loading && <Loader /> }
       <Container className="mt-1 d-flex flex-wrap justify-content-center z-index-1">
         {pokemons.map((pokemon) => (
           <PokemonCard
