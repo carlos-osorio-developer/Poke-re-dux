@@ -12,6 +12,7 @@ const PokemonList = () => {
   }, []);
 
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
+  const loading = useSelector((state) => state.pokeState.loading);
 
   return (
     <div>
