@@ -18,7 +18,7 @@ const PokemonCard = (props) => {
       <Card.Body className="d-flex flex-column align-items-center p-0">
         <Container className="d-flex flex-column justify-content-center text-capitalize w-100">
           <span className={style.smallText}>{pokeName}</span>
-          <Badge bg="success">{type}</Badge>
+          <Badge bg="success" className="w-50 m-auto">{type}</Badge>
         </Container>
         <Button variant="warning" className="w-50 mt-4">
           <FaHeart />
