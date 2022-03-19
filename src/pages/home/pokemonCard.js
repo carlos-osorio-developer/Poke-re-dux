@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaHeart } from 'react-icons/fa';
 import Card from 'react-bootstrap/Card';
@@ -10,6 +10,13 @@ import style from './pokemonCard.module.css';
 const PokemonCard = (props) => {
   const { pokeName, image, type } = props;
 
+  const [favorite, setFavorite] = useState(false);
+  const favColor = favorite ? 'red' : 'black';
+
+  const favToggle = () => {
+    setFavorite(!favorite);
+  };
+
   return (
     <Card className={style.PokemonCard}>
       <div className={style.fixedHeigth1}>
@@ -20,8 +27,8 @@ const PokemonCard = (props) => {
           <span className={style.smallText}>{pokeName}</span>
           <Badge bg="success" className="w-50 m-auto">{type}</Badge>
         </Container>
-        <Button variant="warning" className="w-50 mt-4">
-          <FaHeart />
+        <Button variant="warning" className="w-50 mt-4" onClick={favToggle}>
+          <FaHeart style={{ fill: favColor }} />
         </Button>
       </Card.Body>
     </Card>
