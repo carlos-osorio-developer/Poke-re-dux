@@ -1,20 +1,25 @@
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { FaHeart } from 'react-icons/fa';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import style from './pokemonCard.module.css';
+import { saveFavorite } from '../../redux/slices/favoritesSlice';
 
 const PokemonCard = (props) => {
+  const dispatch = useDispatch();
   const { pokeName, image, type } = props;
 
   const [favorite, setFavorite] = useState(false);
   const favColor = favorite ? 'red' : 'black';
 
   const favToggle = () => {
+    const favPokemon = { name: pokeName, image, type };
     setFavorite(!favorite);
+    dispatch(saveFavorite(favPokemon));
   };
 
   return (

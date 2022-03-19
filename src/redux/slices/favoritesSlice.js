@@ -11,10 +11,12 @@ const deleteFavorite = (payload) => ({
   payload,
 });
 
-const favoritesReducer = (state = [], action) => {
+const initialState = { pokemons: [] };
+
+const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_FAVORITE:
-      return { ...state, pokemons: action.payload };
+      return { ...state, pokemons: [...state.pokemons, action.payload] };
     case DELETE_FAVORITE:
       return {
         ...state,
