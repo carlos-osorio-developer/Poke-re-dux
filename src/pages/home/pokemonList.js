@@ -7,13 +7,16 @@ import Loader from './loader';
 import { getPokemons } from '../../redux/slices/pokemonListSlice';
 
 const PokemonList = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getPokemons());
-  }, []);
-
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
   const loading = useSelector((state) => state.pokeState.loading) || false;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!pokemons.length) {
+      dispatch(getPokemons());
+    }
+  }, []);
 
   return (
     <div>
