@@ -12,10 +12,10 @@ import { saveFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice'
 const PokemonCard = (props) => {
   const dispatch = useDispatch();
   const {
-    id, pokeName, image, type,
+    id, pokeName, image, type, fav,
   } = props;
-
-  const [favorite, setFavorite] = useState(false);
+  console.log(fav);
+  const [favorite, setFavorite] = useState(fav);
   const favColor = favorite ? 'red' : 'black';
 
   const favToggle = () => {
@@ -53,6 +53,7 @@ PokemonCard.propTypes = {
   pokeName: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  fav: PropTypes.bool.isRequired,
 };
 
 export default PokemonCard;

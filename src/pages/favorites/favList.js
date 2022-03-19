@@ -16,6 +16,7 @@ const FavList = () => {
             pokeName={pokemon.name}
             image={pokemon.image}
             type={pokemon.type}
+            fav
           />
         ))}
       </Container>
