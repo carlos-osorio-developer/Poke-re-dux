@@ -7,7 +7,7 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import style from './pokemonCard.module.css';
-import { saveFavorite } from '../../redux/slices/favoritesSlice';
+import { saveFavorite, deleteFavorite } from '../../redux/slices/favoritesSlice';
 
 const PokemonCard = (props) => {
   const dispatch = useDispatch();
@@ -18,8 +18,12 @@ const PokemonCard = (props) => {
 
   const favToggle = () => {
     const favPokemon = { name: pokeName, image, type };
+    if (favorite) {
+      dispatch(deleteFavorite(favPokemon));
+    } else {
+      dispatch(saveFavorite(favPokemon));
+    }
     setFavorite(!favorite);
-    dispatch(saveFavorite(favPokemon));
   };
 
   return (
