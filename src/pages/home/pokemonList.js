@@ -14,7 +14,6 @@ const PokemonList = () => {
 
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
   const loading = useSelector((state) => state.pokeState.loading) || false;
-  console.log(loading);
 
   return (
     <div>
@@ -24,6 +23,7 @@ const PokemonList = () => {
         {pokemons.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}
+            id={pokemon.id}
             pokeName={pokemon.name}
             image={pokemon.image}
             type={pokemon.type}
