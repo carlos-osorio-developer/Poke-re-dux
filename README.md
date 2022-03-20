@@ -5,6 +5,11 @@ This app loads data from an API and render it using React and Redux, showing you
 It uses Redux, React-Bootstrap and React-Icons.
 
 
+## Live Demo
+
+[PokeRedux](https://poke-redux.netlify.app/)
+
+
 ## Built With
 
 - HTML
@@ -67,6 +72,10 @@ Contributions, issues, and feature requests are welcome!
 Give a ⭐️ if you like this project or if it's useful to you!
 
 
+## To do
+
+- Add tests.
+- Use localStorage to persists user data.
 
 ## 📝 License
 
