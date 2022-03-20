@@ -1,10 +1,12 @@
 import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 import PokemonCard from './pokemonCard';
 import SearchBar from './searchBar';
 import Loader from './loader';
-import { getPokemons } from '../../redux/slices/pokemonListSlice';
+import { getPokemons, searchPokemon } from '../../redux/slices/pokemonListSlice';
 
 const PokemonList = () => {
   const pokemons = useSelector((state) => state.pokeState.pokemons) || [];
@@ -23,10 +25,30 @@ const PokemonList = () => {
     }
   }, []);
 
+  const handleClick = () => (
+    dispatch(searchPokemon(''))
+  );
+
   return (
     <div>
       <SearchBar />
       { loading && <Loader /> }
+      { !filteredPok.length && (
+        <Alert variant="success" className="mx-5 mt-5">
+          <Alert.Heading>No results</Alert.Heading>
+          <p>
+            There are no results for this search, please submit another search, or
+            close this message to display all Pokemons again.
+          </p>
+          <Button
+            variant="danger"
+            className="position-absolute top-0 end-0"
+            onClick={handleClick}
+          >
+            X
+          </Button>
+        </Alert>
+      )}
       <Container className="mt-1 d-flex flex-wrap justify-content-center z-index-1">
         {filteredPok.map((pokemon) => {
           const fav = favIds.includes(pokemon.id);
