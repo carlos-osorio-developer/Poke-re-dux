@@ -14,7 +14,9 @@ const PokemonList = () => {
   const favPokemons = useSelector((state) => state.favState.pokemons);
 
   const activeSearch = useSelector((state) => state.pokeState.search) || '';
-  const filteredPok = pokemons.filter((pokemon) => (pokemon.name.includes(activeSearch)));
+  const filteredPok = pokemons.filter(
+    (pokemon) => (pokemon.name.includes(activeSearch.toLowerCase())),
+  );
 
   const favIds = favPokemons.map((pokemon) => (pokemon.id));
 
@@ -33,7 +35,7 @@ const PokemonList = () => {
     <div>
       <SearchBar />
       { loading && <Loader /> }
-      { !filteredPok.length && (
+      { !loading && !filteredPok.length && (
         <Alert variant="success" className="mx-5 mt-5">
           <Alert.Heading>No results</Alert.Heading>
           <p>
