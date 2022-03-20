@@ -11,6 +11,9 @@ const PokemonList = () => {
   const loading = useSelector((state) => state.pokeState.loading) || false;
   const favPokemons = useSelector((state) => state.favState.pokemons);
 
+  const activeSearch = useSelector((state) => state.pokeState.search) || '';
+  const filteredPok = pokemons.filter((pokemon) => (pokemon.name.includes(activeSearch)));
+
   const favIds = favPokemons.map((pokemon) => (pokemon.id));
 
   const dispatch = useDispatch();
@@ -25,7 +28,7 @@ const PokemonList = () => {
       <SearchBar />
       { loading && <Loader /> }
       <Container className="mt-1 d-flex flex-wrap justify-content-center z-index-1">
-        {pokemons.map((pokemon) => {
+        {filteredPok.map((pokemon) => {
           const fav = favIds.includes(pokemon.id);
           return (
             <PokemonCard
