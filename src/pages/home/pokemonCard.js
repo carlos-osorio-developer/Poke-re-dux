@@ -14,7 +14,7 @@ const PokemonCard = (props) => {
   const {
     id, pokeName, image, type, fav,
   } = props;
-  console.log(fav);
+
   const [favorite, setFavorite] = useState(fav);
   const favColor = favorite ? 'red' : 'black';
 
