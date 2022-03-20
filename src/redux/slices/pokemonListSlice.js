@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const SET_POKEMONS = 'pokeRedux/pokemonList/SET_POKEMONS';
 const GET_POKEMONS = 'pokeRedux/pokemonList/GET_POKEMONS';
 const GET_POKEMONS_SUCCESS = 'pokeRedux/pokemonList/GET_POKEMONS_SUCCESS';
 const GET_POKEMONS_FAILURE = 'pokeRedux/pokemonList/GET_POKEMONS_FAILURE';
+const SEARCH_POKEMON = 'pokeRedux/pokemonList/SEARCH_POKEMONS';
 
 const URL = process.env.POKEAPI_URL || 'https://pokeapi.co/api/v2/';
 const axiosInstance = axios.create({
@@ -33,8 +33,8 @@ const getPokemons = (limit = 151) => async (dispatch) => {
   });
 };
 
-const setPokemons = (payload) => ({
-  type: SET_POKEMONS,
+const searchPokemon = (payload) => ({
+  type: SEARCH_POKEMON,
   payload,
 });
 
@@ -46,8 +46,8 @@ const pokemonListReducer = (state = [], action) => {
       return { ...state, loading: false, pokemons: action.payload };
     case GET_POKEMONS_FAILURE:
       return { ...state, loading: false, error: action.payload };
-    case SET_POKEMONS:
-      return { ...state, list: action.payload };
+    case SEARCH_POKEMON:
+      return { ...state, search: action.payload };
     default:
       return state;
   }
@@ -55,6 +55,6 @@ const pokemonListReducer = (state = [], action) => {
 
 export {
   pokemonListReducer as default,
-  setPokemons,
   getPokemons,
+  searchPokemon,
 };
